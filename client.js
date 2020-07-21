@@ -74,21 +74,21 @@ function employeeBonusCalc(employee) {
     totalBonus: 0
   };
   if (employee.reviewRating <= 2) {
-    newEmployeeBonus.bonusPercentage = 0;
+    newEmployeeBonus.bonusPercentage += 0;
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
     newEmployeeBonus.totalCompensation = Number(employee.annualSalary);
 
   } else if (employee.reviewRating === 3) {
-    newEmployeeBonus.bonusPercentage = 0.04;
+    newEmployeeBonus.bonusPercentage += 0.04;
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
     newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
 
   } else if (employee.reviewRating === 4) {
-    newEmployeeBonus.bonusPercentage = 0.06;
+    newEmployeeBonus.bonusPercentage += 0.06;
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
     newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
   } else if (employee.reviewRating === 5) {
-    newEmployeeBonus.bonusPercentage = 0.10;
+    newEmployeeBonus.bonusPercentage += 0.10;
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
     newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
   }
@@ -99,10 +99,3 @@ function employeeBonusCalc(employee) {
 
 
 console.log(employeeBonusCalc(Scout));
-
-
-
-/*
-if employees.reviewRating =< 2 
-
-*/
