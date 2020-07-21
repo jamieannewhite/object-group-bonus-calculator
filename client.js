@@ -119,7 +119,7 @@ function minMax(finalBonusPercentage) {
   } else if (finalBonusPercentage < 0 ) {
     finalBonusPercentage = 0;
   }
-  return finalBonusPercentage;
+  return finalBonusPercentage ;
 }
 */
 
