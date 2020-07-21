@@ -66,6 +66,7 @@ let Mayella = {
   reviewRating: 1
 };
 
+
 function employeeBonusCalc(employee) {
   let newEmployeeBonus = {
     name: employee.name,
@@ -73,6 +74,12 @@ function employeeBonusCalc(employee) {
     totalCompensation: 0,
     totalBonus: 0
   };
+  if (employee.employeeNumber.length === 4){
+    newEmployeeBonus.bonusPercentage = 0.05;
+  }
+   if (employee.annualSalary > 65000){
+    newEmployeeBonus.bonusPercentage -= 0.01;
+   }
   if (employee.reviewRating <= 2) {
     newEmployeeBonus.bonusPercentage += 0;
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
@@ -92,10 +99,28 @@ function employeeBonusCalc(employee) {
     newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
     newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
   }
-
-
+  if (newEmployeeBonus.bonusPercentage > 0.13) {
+    newEmployeeBonus.bonusPercentage = .13;
+    newEmployeeBonus.totalBonus = parseInt(.13 * employee.annualSalary);
+    newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
+  } else if (newEmployeeBonus.bonusPercentage < 0) {
+    newEmployeeBonus.bonusPercentage = 0;
+    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
+    newEmployeeBonus.totalCompensation = Number(employee.annualSalary);
+  }
   return newEmployeeBonus;
+};
+
+/*
+function minMax(finalBonusPercentage) {
+  if (finalBonusPercentage.bonusPercentage > .13) {
+    finalBonusPercentage.bonusPercentage = .13;
+    finalBonusPercentage.totalBonus = parseInt()
+  } else if (finalBonusPercentage < 0 ) {
+    finalBonusPercentage = 0;
+  }
+  return finalBonusPercentage;
 }
+*/
 
-
-console.log(employeeBonusCalc(Scout));
+console.log(employeeBonusCalc(Atticus));
