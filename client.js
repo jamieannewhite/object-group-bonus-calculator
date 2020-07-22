@@ -52,64 +52,28 @@ let Jem = {
   annualSalary: '63500',
   reviewRating: 4
 }
-let Atticus = {
-  name: 'Atticus',
-  employeeNumber: '2405',
-  annualSalary: '47000',
-  reviewRating: 3
-};
 
-let Mayella = {
-  name: 'Mayella',
-  employeeNumber: '89068',
-  annualSalary: '35000',
-  reviewRating: 1
-};
-
-
-function employeeBonusCalc(employee) {
-  let newEmployeeBonus = {
-    name: employee.name,
-    bonusPercentage: 0,
-    totalCompensation: 0,
-    totalBonus: 0
-  };
-  if (employee.employeeNumber.length === 4){
-    newEmployeeBonus.bonusPercentage = 0.05;
+function calculateBonus(employeeToCalculate) {
+  console.log('employee', employeeToCalculate);
+  //rating check
+  let bonusPercentage = 0;
+  if (employeeToCalculate.reviewRating <= 2){
+    console.log('No bonus for you!');
+    bonusPercentage =0;
+  }else if (employeeToCalculate.reviewRating === 3) {
+    console.log('Bonus should be 4%');
+    bonusPercentage = 0.4;
   }
-   if (employee.annualSalary > 65000){
-    newEmployeeBonus.bonusPercentage -= 0.01;
-   }
-  if (employee.reviewRating <= 2) {
-    newEmployeeBonus.bonusPercentage += 0;
-    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary);
-
-  } else if (employee.reviewRating === 3) {
-    newEmployeeBonus.bonusPercentage += 0.04;
-    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
-
-  } else if (employee.reviewRating === 4) {
-    newEmployeeBonus.bonusPercentage += 0.06;
-    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
-  } else if (employee.reviewRating === 5) {
-    newEmployeeBonus.bonusPercentage += 0.10;
-    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
+  else if (employeeToCalculate.reviewRating === 4) {
+    console.log('Bonus should be 6%')
+    bonusPercentage = 0.6;
   }
-  if (newEmployeeBonus.bonusPercentage > 0.13) {
-    newEmployeeBonus.bonusPercentage = .13;
-    newEmployeeBonus.totalBonus = parseInt(.13 * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary) + newEmployeeBonus.totalBonus;
-  } else if (newEmployeeBonus.bonusPercentage < 0) {
-    newEmployeeBonus.bonusPercentage = 0;
-    newEmployeeBonus.totalBonus = parseInt(newEmployeeBonus.bonusPercentage * employee.annualSalary);
-    newEmployeeBonus.totalCompensation = Number(employee.annualSalary);
+  else if (employeeToCalculate.reviewRating === 5) {
+    console.log('Bonus should be 10%')
+    bonusPercentage = 0.1
   }
-  return newEmployeeBonus;
-};
+  
+}
 
 /*
 function minMax(finalBonusPercentage) {
@@ -122,5 +86,4 @@ function minMax(finalBonusPercentage) {
   return finalBonusPercentage ;
 }
 */
-
-console.log(employeeBonusCalc(Atticus));
+ calculateBonus(employees[0]);
